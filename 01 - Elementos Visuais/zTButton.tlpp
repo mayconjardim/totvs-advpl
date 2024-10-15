@@ -1,0 +1,28 @@
+#include 'totvs.ch'
+#include 'protheus.ch'
+
+
+User Function zTButton()
+Local oDgl1
+Local cTituloJanela := "Utilitários do Protheus"
+Local oButton1
+Local oButton2
+Local oButton3
+Local oButton4
+Local oButton5
+
+
+
+oDgl1               := TDialog():New(180, 180, 550           , 700  , cTituloJanela,   ,   , , , CLR_BLACK, CLR_WHITE,    , , .T.)
+
+oButton1            := TButton():New(20 , 50 , "Clientes"    , oDgl1, {||mata030()}, 60, 10, , , .F.      , .T.      , .F., , .F., , , .F.)
+oButton2            := TButton():New(40 , 50 , "Fornecedores", oDgl1, {||mata020()}, 60, 10, , , .F.      , .T.      , .F., , .F., , , .F.)
+oButton3            := TButton():New(60 , 50 , "Bancos"      , oDgl1, {||mata070()}, 60, 10, , , .F.      , .T.      , .F., , .F., , , .F.)
+oButton4            := TButton():New(80 , 50 , "Produtos"    , oDgl1, {||mata010()}, 60, 10, , , .F.      , .T.      , .F., , .F., , , .F.)
+oButton5            := TButton():New(100 , 100 , "Fechar tela"    , oDgl1, {||oDgl1:End()}, 60, 10, , , .F.      , .T.      , .F., , .F., , , .F.)
+
+
+
+oDgl1:Activate(,,,)
+
+Return
