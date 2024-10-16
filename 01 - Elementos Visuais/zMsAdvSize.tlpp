@@ -1,0 +1,47 @@
+#include 'totvs.ch'
+#include 'protheus.ch'
+
+
+User Function zMsAdvSize()
+    Local oDgl1
+    Local cTituloJanela := "Utilitários do Protheus"
+    Local oButton1
+    Local oButton2
+    Local oButton3
+    Local oButton4
+    Local oButton5
+    Local oSay1
+    Local oSay2
+    Local oSay3
+    Local oSay4
+    Local oSaySize
+    Local aSize := MsAdvSize()
+    Local cSize7, cSize1, cSize6, cSize5
+
+    cSize7 := cValtoChar(aSize[7])
+    cSize1 := cValtoChar(aSize[1])
+    cSize6 := cValtoChar(aSize[6])
+    cSize5 := cValtoChar(aSize[5])
+        
+
+    oDgl1               := TDialog():New(aSize[7], aSize[1], aSize[6], aSize[5], cTituloJanela,,,,,CLR_BLACK, CLR_WHITE,,,.T.)
+
+    oSay1       := TSay():New(10,70,{||'Clique aqui para abrir a tela de Clientes'},oDgl1,,,,,,.T.,CLR_BLUE,CLR_WHITE,300,20)
+    oButton1            := TButton():New(20 , 50 , "Clientes"    , oDgl1, {||mata030()}, 60, 10, , , .F.      , .T.      , .F., , .F., , , .F.)
+
+    oSay2       := TSay():New(30,70,{||'Clique aqui para abrir a tela de Fornecedores'},oDgl1,,,,,,.T.,CLR_BLUE,CLR_WHITE,300,20)
+    oButton2            := TButton():New(40 , 50 , "Fornecedores", oDgl1, {||mata020()}, 60, 10, , , .F.      , .T.      , .F., , .F., , , .F.)
+
+    oSay3       := TSay():New(50,70,{||'Clique aqui para abrir a tela de Bancos'},oDgl1,,,,,,.T.,CLR_BLUE,CLR_WHITE,300,20)
+    oButton3            := TButton():New(60 , 50 , "Bancos"      , oDgl1, {||mata070()}, 60, 10, , , .F.      , .T.      , .F., , .F., , , .F.)
+
+    oSay4       := TSay():New(70,70,{||'Clique aqui para abrir a tela de Produtos'},oDgl1,,,,,,.T.,CLR_BLUE,CLR_WHITE,300,20)
+    oButton4            := TButton():New(80 , 50 , "Produtos"    , oDgl1, {||mata010()}, 60, 10, , , .F.      , .T.      , .F., , .F., , , .F.)
+
+    oButton5            := TButton():New(100 , 50 , "Fechar a tela"    , oDgl1, {||oDgl1:End()}, 60, 10, , , .F.      , .T.      , .F., , .F., , , .F.)
+
+    oSaySize := TSay():New(120,50,{||cSize7 + " - " + cSize1 + " - " + cSize6 + " - " + cSize5},oDgl1,,,,,,.T.,CLR_BLUE,CLR_WHITE,300,20)
+
+    oDgl1:Activate(,,,)
+
+Return
