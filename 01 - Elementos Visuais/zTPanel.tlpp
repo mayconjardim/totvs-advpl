@@ -1,0 +1,21 @@
+#include 'totvs.ch'
+#include 'protheus.ch'
+
+
+User Function zTPanel()
+Local oDgl1
+Local oPanel
+Local cTituloJanela := "Teste TPanel"
+Local oSay1
+Local oGet1
+Local cGet1 :=Space(20)
+
+oDgl1 := TDialog():New(0,0,300,300,cTituloJanela,,,,,CLR_BLACK,CLR_WHITE,,,.T.)
+oPanel      := tPanel():New(10,10,"",oDgl1,,.T.,,CLR_YELLOW,CLR_BLUE,100,100)
+oSay1       := TSay():New(10,10,{||'Cliente'},oPanel,,,,,,.T.,CLR_WHITE,CLR_WHITE,300,20)
+oGet1       := TGet():New(25,10,{|u| IIF(Pcount()>0,cGet1:=u,cGet1)},oPanel,60,10,"@!",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cGet1,,,, )
+
+
+oDgl1:Activate(,,,.T.)
+
+Return

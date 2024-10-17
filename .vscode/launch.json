@@ -27,6 +27,9 @@
 		},
 		{
 			"label": "sigacfg"
+		},
+		{
+			"label": "zTPanel"
 		}
 	],
 	"lastProgramExecuted": "sigamdi",
