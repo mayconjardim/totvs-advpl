@@ -19,10 +19,8 @@ User Function zTget2()
     oGet1       := TGet():New(25,10,{|u| IIF(Pcount()>0,cGet1:=u,cGet1)},oDlg1,40,10,"@!",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cGet1,,,, )
     oGet1:cF3 := "SA1"
 
-
     oSay2  := TSay():New(10,60,{||'Loja'},oDlg1,,,,,,.T.,CLR_BLUE,CLR_WHITE,300,20)
     oGet2      := TGet():New(25,60,{|u| IIF(Pcount()>0,cGet2:=u,cGet2)},oDlg1,30,10,"@!",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cGet2,,,, )
-
 
     oButton1    := TButton():New(60, 10, "Bloquear", oDlg1,{|| fBloq(cGet1, cGet2) }, 60,15,,,.F.,.T.,.F.,,.F.,,,.F. ) 
 
@@ -36,7 +34,7 @@ Static Function fBloq(cCod, cLoja)
     DbSelectArea("SA1")
     SA1->(DbSeek(xFilial("SA1")+cCod+cLoja))
     RecLock("SA1",.F.)
-    SA1->A1_MSBLQL := '1'
+    SA1->A1_MSBLQL := '1
     MsUnlock()
 
    MsgInfo("O cliente com código "+cCod+" e loja"+cloja+" está sendo bloqueado!")
