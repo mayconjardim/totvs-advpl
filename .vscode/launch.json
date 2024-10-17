@@ -24,6 +24,9 @@
 		},
 		{
 			"label": "sigamdi"
+		},
+		{
+			"label": "sigacfg"
 		}
 	],
 	"lastProgramExecuted": "sigamdi",
