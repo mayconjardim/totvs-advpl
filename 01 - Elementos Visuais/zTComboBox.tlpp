@@ -1,0 +1,23 @@
+#include 'totvs.ch'
+#include 'protheus.ch'
+
+
+User Function zTComboBox()
+Local oDgl1
+Local cTituloJanela := "Painel ComboBox"
+Local aOpcoes := {"Ferrari", "Mercedes", "RedBull", "McLaren", "Haas"}
+Local cOpcao := aOpcoes[1]
+Local oButton1
+Local oCombo
+
+oDgl1 := TDialog():New(0,0,500,500,cTituloJanela,,,,,CLR_BLACK,CLR_WHITE,,,.T.)
+
+oCombo := TComboBox():New(02,02,{|u|if(PCount()>0,cOpcao:=u,cOpcao)}, aOpcoes,100,20,oDgl1,,{||Alert('Mudou item da combo')},,,,.T.,,,,,,,,,'cCombo')
+
+oButton1 := TButton():New(70 , 10 , "Executar"    , oDgl1, {||MsgInfo(cOpcao, "Conteudo digitado!")}, 60, 10, , , .F.      , .T.      , .F., , .F., , , .F.)
+
+
+oDgl1:Activate(,,,.T.)
+
+
+Return
