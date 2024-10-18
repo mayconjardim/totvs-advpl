@@ -1,0 +1,42 @@
+#include 'totvs.ch'
+#include 'protheus.ch'
+
+
+User Function zTFolder()
+Local oDgl1
+Local cTituloJanela := "Teste TFolder"
+Local oFolder
+Local aFolder := { "Maycon", "Parreira", "Jardim"}
+lOCAL oSay1, oSay2, oSay3
+Local oGet1, oGet2, oGet3
+Local cGet1 :=Space(20)
+Local cGet2 :=Space(20)
+Local cGet3 :=Space(20)
+Local oButton1, oButton2, oButton3
+
+oDgl1 := TDialog():New(0,0,300,400,cTituloJanela,,,,,CLR_BLACK,CLR_WHITE,,,.T.)
+
+oFolder := TFolder():New(0,0,aFolder, aFolder,oDgl1,,,,.T.,,200,200)
+
+
+    oSay1 := TSay():New(01,01,{||'Maycon'},oFolder:aDialogs[1],,,,,,.T.,CLR_BLUE,CLR_WHITE,300,20)
+    cGet1 := Space(30)
+    oGet1 := TGet():New(10,01,{|u| IIF(Pcount()>0,cGet1:=u,cGet1)},oFolder:aDialogs[1],60,10,"@!",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cGet1,,,, )
+    oButton1 := TButton():New(25 , 10 , "Executar"    , oFolder:aDialogs[1], {||MsgInfo(cGet1, "Conteudo digitado!")}, 60, 10, , , .F.      , .T.      , .F., , .F., , , .F.)
+
+
+    oSay2 := TSay():New(01,01,{||'Parreira'},oFolder:aDialogs[2],,,,,,.T.,CLR_BLUE,CLR_WHITE,300,20)
+    cGet2 := Space(30)
+    oGet2 := TGet():New(10,01,{|u| IIF(Pcount()>0,cGet2:=u,cGet2)},oFolder:aDialogs[2],60,10,"@!",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cGet2,,,, )
+    oButton2 := TButton():New(25 , 10 , "Executar"    , oFolder:aDialogs[2], {||MsgInfo(cGet2, "Conteudo digitado!")}, 60, 10, , , .F.      , .T.      , .F., , .F., , , .F.)
+              
+
+    oSay3 := TSay():New(01,01,{||'Jardim'},oFolder:aDialogs[3],,,,,,.T.,CLR_BLUE,CLR_WHITE,300,20)
+    cGet3 := Space(30)
+    oGet3 := TGet():New(10,01,{|u| IIF(Pcount()>0,cGet3:=u,cGet3)},oFolder:aDialogs[3],60,10,"@!",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cGet3,,,, )
+    oButton3 := TButton():New(25 , 10 , "Executar"    , oFolder:aDialogs[3], {||MsgInfo(cGet3, "Conteudo digitado!")}, 60, 10, , , .F.      , .T.      , .F., , .F., , , .F.)
+
+oDgl1:Activate(,,,.T.)
+
+
+Return
