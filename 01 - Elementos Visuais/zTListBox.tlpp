@@ -1,0 +1,25 @@
+#include 'totvs.ch'
+#include 'protheus.ch'
+
+
+User Function zTListBox()
+Local oDgl1
+Local cTituloJanela := "Painel de opções"
+Local aOpcoes := {"Ferrari", "Mercedes", "RedBull", "McLaren", "Haas"}
+Local nOpcao := 1
+Local oListBox
+Local oButton1
+
+oDgl1 := TDialog():New(0,0,500,500,cTituloJanela,,,,,CLR_BLACK,CLR_WHITE,,,.T.)
+
+oListBox := TListBox():New(001,001,{|u|if(Pcount()>0,nOpcao:=u,nOpcao)},aOpcoes,100,100,{||},oDgl1,,,,.T.)
+
+oListBox:bChange := {||MsgInfo(aOpcoes[nOpcao], "Mudou de Item" )}
+
+oButton1 := TButton():New(70 , 10 , "Executar"    , oDgl1, {||MsgInfo(aOpcoes[nOpcao], "Conteudo digitado!")}, 60, 10, , , .F.      , .T.      , .F., , .F., , , .F.)
+
+
+oDgl1:Activate(,,,.T.)
+
+
+Return
