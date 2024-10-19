@@ -1,0 +1,62 @@
+#include 'totvs.ch'
+#include 'protheus.ch'
+
+
+User Function zTCheckBox()
+Local oDlg1  
+Local oButton1
+Local oButton2 
+Private oCheck1
+Private oCheck2
+Private lCheck1   := .F.
+Private lCheck2   := .F.
+
+oDlg1 := TDialog():New(0,0,500,500,'Painel de CheckBox',,,,,CLR_BLACK,CLR_WHITE,,,.T.)
+
+oButton1   := TButton():New(01, 01, "Mostrar Escolha", oDlg1,;
+{|| CheckOptions()}, 60,15,,,.F.,.T.,.F.,,.F.,,,.F. ) // Chama tela de Clientes
+
+oButton2   := TButton():New(50, 01, "MARCAR TODOS", oDlg1,;
+{|| MarcarTodos()}, 60,15,,,.F.,.T.,.F.,,.F.,,,.F. ) // Chama tela de Clientes
+
+oCheck1 := TCheckBox():New(20,01,'CheckBox 1',{|| lCheck1},oDlg1,100,210,,{|| lCheck1 := !lCheck1, IIF(lCheck1,MsgInfo("Está MARCADO","Status"),MsgInfo("Está DESMARCADO","Status"))},,,,,,.T.,,,)
+
+oCheck2 := TCheckBox():New(30,01,'CheckBox 2',,oDlg1,100,210,,,,,,,,.T.,,,)
+oCheck2:bSetGet := {|| lCheck2}
+oCheck2:bLClicked := {|| lCheck2 := !lCheck2,IIF(lCheck2 = .T.,MsgInfo("Está MARCADO","Status"),MsgInfo("Está DESMARCADO","Status"))}
+
+
+
+oDlg1:Activate(,,,.T.)
+
+return
+
+Static Function CheckOptions()
+
+IF lCheck1 .AND. lCheck2 = .F.
+    MsgInfo("Somente o Check1 está marcado")
+elseif lCheck2 .AND. !lCheck1
+    MsgInfo("Somente o Check2 está marcado")
+elseif lCheck2 .AND. lCheck2
+    MsgInfo("TODAS AS OPÇÕES ESTÃO MARCADAS")
+else
+    MsgInfo("TODAS AS OPÇÕES ESTÃO DESMARCADAS")
+endif
+
+return
+
+
+
+Static Function Marcartodos()
+lCheck1 := .T.
+lCheck2 := .T.
+
+oCheck1:Refresh()
+oCheck2:Refresh()
+return
+
+Static Function Desmarcartodos()
+
+
+
+return
