@@ -1,0 +1,70 @@
+#include 'totvs.ch'
+#include 'protheus.ch'
+
+User Function TelaCadastro01()
+
+Private oDgl1
+Private cTituloJanela := "Tela de Cadastro 01"
+Private oFolder
+Private aFolder := {"Dados Pessoais", "Endereço", "Outros"}
+
+//Dados Pessoais
+Private oSayNome
+Private cGetNome
+Private oGetNome
+Private oSayNomeReduz
+Private cGetNomeReduz
+Private oGetNomeReduz
+Private oSayDatNasc
+Private cGetDatNasc
+Private dGetDatNasc
+Private oSayDDD
+Private cGetDDD
+Private oGetDDD
+Private oSayTelefone
+Private cGetelefone
+Private oGetelefone
+Private oGroupSexo
+Private aOpcoesSexo := {"Masculino", "Feminino"}
+Private nOpcaoSexo := 1
+Private oRadioSexo
+Private oSayCPF
+Private cGetCPF
+Private oGetCPF
+
+
+oDgl1 := TDialog():New(0,0,768, 1366,cTituloJanela,,,,,CLR_BLACK, CLR_WHITE,,,.T.)
+oFolder := TFolder():New(0,0,aFolder, aFolder,oDgl1,,,,.T.,,768,200)
+
+//Elementos Dados Pessoais
+oSayNome := TSay():New(01,05,{||'Nome'},oFolder:aDialogs[1],,,,,,.T.,CLR_BLUE,CLR_WHITE,300,30)
+cGetNome := Space(30)
+oGetNome := TGet():New(10,05,{|u| IIF(Pcount()>0,cGetNome:=u,cGetNome)},oFolder:aDialogs[1],60,10,"@!",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cGetNome,,,, )
+
+oSayNomeReduz := TSay():New(01,100,{||'Nome Reduzido'},oFolder:aDialogs[1],,,,,,.T.,CLR_BLUE,CLR_WHITE,300,20)
+cGetNomeReduz := Space(30)
+oGetNomeReduz := TGet():New(10,100,{|u| IIF(Pcount()>0,cGetNomeReduz:=u,cGetNomeReduz)},oFolder:aDialogs[1],60,10,"@!",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cGetNomeReduz,,,,)
+
+oSayDatNasc := TSay():New(01,210,{||'Data de Nascimento'},oFolder:aDialogs[1],,,,,,.T.,CLR_BLUE,CLR_WHITE,300,20)
+cGetDatNasc := Date()
+oGetDatNasc := TGet():New(10,210,{|u| IIF(Pcount()>0,cGetDatNasc:=u,cGetDatNasc)},oFolder:aDialogs[1],60,10,"@!",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,,,,,.T.)
+
+oSayDDD := TSay():New(01,315,{||'DDD Cel.'},oFolder:aDialogs[1],,,,,,.T.,CLR_BLUE,CLR_WHITE,300,10)
+cGetDDD := Space(4)
+oGetDDD := TGet():New(10,315,{|u| IIF(Pcount()>0,cGetDDD:=u,cGetDDD)},oFolder:aDialogs[1],60,10,"@E (99)",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cGetDDD,,,,)
+
+oSayTelefone := TSay():New(01,420,{||'Celular'},oFolder:aDialogs[1],,,,,,.T.,CLR_BLUE,CLR_WHITE,300,20)
+cGetelefone := Space(11)
+oGetelefone := TGet():New(10,420,{|u| IIF(Pcount()>0,cGetelefone:=u,cGetelefone)},oFolder:aDialogs[1],60,10,"@E 9-9999-9999",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cGetelefone,,,,)
+
+oGroupSexo  := TGroup():New(01,530 ,50,700,"Sexo",oFolder:aDialogs[1],,,.T.)
+oRadioSexo := TRadMenu():New (10,540,aOpcoesSexo,,oFolder:aDialogs[1],,,,,,,,100,12,,,,.T.)
+oRadioSexo:bSetGet := {|u|Iif (PCount()==0,nOpcaoSexo,nOpcaoSexo:=u)}
+
+oSayCPF := TSay():New(25,05,{||'CPF'},oFolder:aDialogs[1],,,,,,.T.,CLR_BLUE,CLR_WHITE,300,10)
+cGetCPF := Space(14)
+oGetCPF := TGet():New(35,05,{|u| IIF(Pcount()>0,cGetCPF:=u,cGetCPF)},oFolder:aDialogs[1],60,10,"@E (99)",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cGetCPF,,,,)
+
+oDgl1:Activate(,,,)
+
+Return
