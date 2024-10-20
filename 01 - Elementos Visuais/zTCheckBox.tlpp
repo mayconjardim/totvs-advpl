@@ -57,6 +57,10 @@ return
 
 Static Function Desmarcartodos()
 
+lCheck1 := .F.
+lCheck2 := .F.
 
+oCheck1:Refresh()
+oCheck2:Refresh()
 
 return
