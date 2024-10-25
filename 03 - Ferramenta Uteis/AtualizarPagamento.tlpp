@@ -1,0 +1,27 @@
+#Include "PROTHEUS.CH"
+
+User Function AtualzarPagamento()                        
+Local oComboBo1
+Local nComboBo1 := 1
+Local oFont1 := TFont():New("Arial Black",,018,,.T.,,,,,.F.,.F.)
+Local oListBox1
+Local nListBox1 := 1
+Local oMsCalen1
+Local oSay1
+Local oSay2
+Local oSay3
+Static oDlg1
+
+  DEFINE MSDIALOG oDlg1 TITLE "New Dialog" FROM 000, 000  TO 400, 700 COLORS 0, 16777215 PIXEL
+
+    @ 016, 004 LISTBOX oListBox1 VAR nListBox1 ITEMS {"ePed026849","ePed026850","ePed026851","ePed026852","ePed026853","ePed026854","ePed026855","ePed026856","ePed026857","ePed026858","ePed026859"} SIZE 093, 075 OF oDlg1 COLORS 0, 16777215 PIXEL
+    @ 005, 028 SAY oSay1 PROMPT "Lista de ePeds" SIZE 055, 007 OF oDlg1 FONT oFont1 COLORS 255, 16777215 PIXEL
+    @ 016, 109 MSCOMBOBOX oComboBo1 VAR nComboBo1 ITEMS {"000746","000747","000748"} SIZE 072, 010 OF oDlg1 COLORS 0, 16777215 PIXEL
+    @ 006, 119 SAY oSay2 PROMPT "Nº da Nota" SIZE 048, 007 OF oDlg1 FONT oFont1 COLORS 255, 16777215 PIXEL
+    oMsCalen1 := MsCalend():New(017, 191, oDlg1, .T.)
+    oMsCalen1:dDiaAtu := CtoD("10/24/2024")
+    @ 005, 225 SAY oSay3 PROMPT "Data de Pagamento" SIZE 071, 007 OF oDlg1 FONT oFont1 COLORS 255, 16777215 PIXEL
+
+  ACTIVATE MSDIALOG oDlg1 CENTERED
+
+Return      
